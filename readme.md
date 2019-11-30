@@ -1,5 +1,7 @@
 # Complex unit test tasks
 
+[![Unit Tests](https://github.com/algorythm/ContextUnitTests/workflows/Unit%20Tests/badge.svg)](https://github.com/algorythm/ContextUnitTests/actions)
+
 ... or at least I think it's a quite difficult problem to solve (hence why I haven't solved it yet)
 
 ## Rules
