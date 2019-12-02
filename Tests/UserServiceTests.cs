@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Castle.Core;
 using ContextUnitTests.BusinessLogic;
 using FluentAssertions.Common;
 using Moq;
@@ -48,7 +46,7 @@ namespace ContextUnitTests.Tests
                 await context.SaveChangesAsync();
             }
 
-            var mockContext = new Mock<ApplicationContext>();
+            var mockContext = new Mock<ApplicationContext>(Options);
             mockContext.Setup(m => m.Set<User>()).Returns(MockFactory.CreateDbSetMock(user).Object);
             
             var userService = new UserService(mockContext.Object);
