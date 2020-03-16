@@ -24,7 +24,7 @@ namespace ContextUnitTests.Tests
             await using (var context = new ApplicationContext(Options))
             {
                 var userService = new UserService(context);
-                fetchedUser = await userService.GetUserByName(user.Name);
+                fetchedUser = await userService.GetUserByNameAsync(user.Name);
             }
             
             Assert.NotNull(fetchedUser);
@@ -50,7 +50,7 @@ namespace ContextUnitTests.Tests
             mockContext.Setup(m => m.Set<User>()).Returns(MockFactory.CreateDbSetMock(user).Object);
             
             var userService = new UserService(mockContext.Object);
-            await userService.GetOrCreateUser(user);
+            await userService.GetOrCreateUserAsync(user);
             
             mockContext.Verify(m => m.Users.AddAsync(
                 It.IsAny<User>(), 

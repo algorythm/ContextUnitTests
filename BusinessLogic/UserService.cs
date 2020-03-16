@@ -12,8 +12,8 @@ namespace ContextUnitTests.BusinessLogic
             _context = context;
         }
 
-        public async Task<User> GetUserByName(string name) =>
-            await _context.Users.FirstOrDefaultAsync(x => x.Name == name);
+        public virtual Task<User> GetUserByNameAsync(string name) =>
+             _context.Users.FirstOrDefaultAsync(x => x.Name == name);
 
         /// <summary>
         /// Checks to see if the specified user already exists in the database.
@@ -23,9 +23,9 @@ namespace ContextUnitTests.BusinessLogic
         /// </summary>
         /// <param name="user">The user to either fetch or create</param>
         /// <returns></returns>
-        public async Task<User> GetOrCreateUser(User user)
+        public virtual async Task<User> GetOrCreateUserAsync(User user)
         {
-            var existingUser = await GetUserByName(user.Name);
+            var existingUser = await GetUserByNameAsync(user.Name);
 
             if (existingUser != null) return existingUser;
 
